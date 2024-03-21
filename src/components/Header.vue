@@ -58,7 +58,7 @@
 
   header {
     width: 100%;
-    height: 73px;
+    height: header-h;
     line-height: 73px;
     font-size: 1.05rem;
     font-weight: bold;
