@@ -1,6 +1,45 @@
 <script>
   export default {
-    
+    data() {
+      return {
+        footerMenu: [
+          {
+            title: 'Informazioni legali',
+            link: '#'
+          },
+          {
+            title: 'Informativa sulla privacy',
+            link: '#'
+          },
+          {
+            title: 'Diritto di recesso',
+            link: '#'
+          }
+        ],
+        socials: [
+          {
+            icon: 'fa-brands fa-square-twitter',
+            link: '#'
+          },
+          {
+            icon: 'fa-brands fa-square-facebook',
+            link: '#'
+          },
+          {
+            icon: 'fa-brands fa-square-instagram',
+            link: '#'
+          },
+          {
+            icon: 'fa-brands fa-square-pinterest',
+            link: '#'
+          },
+          {
+            icon: 'fa-brands fa-square-youtube',
+            link: '#'
+          }
+        ]
+      }
+    },
   }
 </script>
 
@@ -12,9 +51,11 @@
       <div class="info-section">
         <h2>Boolando s.r.l.</h2>
         <ul class="d-flex">
-          <li><a href="#">Informazioni legali</a></li>
-          <li><a href="#">Informativa sulla privacy</a></li>
-          <li><a href="#">Diritto di recesso</a></li>
+          <li
+            v-for="(section, index) in footerMenu"
+            :key="index">
+            <a :href="section.link">{{ section.title }}</a>
+          </li>
         </ul>
       </div>
       <!-- /INFO SECTION -->
@@ -23,11 +64,13 @@
       <div class="socials">
         <h4>Trovaci anche su</h4>
         <ul class="social-icons d-flex">
-          <li><a href="#"><i class="fa-brands fa-square-twitter"></i></a></li>
-          <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
-          <li><a href="#"><i class="fa-brands fa-square-instagram"></i></a></li>
-          <li><a href="#"><i class="fa-brands fa-square-pinterest"></i></a></li>
-          <li><a href="#"><i class="fa-brands fa-square-youtube"></i></a></li>
+          <li
+            v-for="(social, index) in socials"
+            :key="index">
+            <a :href="social.link">
+              <i :class="social.icon"></i>
+            </a>
+          </li>
         </ul>
       </div>
       <!-- /SOCIAL -->

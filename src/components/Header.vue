@@ -17,6 +17,20 @@
             link: '#'
           }
         ],
+        iconsMenu: [
+          {
+            icon: 'fa-regular fa-user',
+            link: '#'
+          },
+          {
+            icon: 'fa-regular fa-heart',
+            link: '#'
+          },
+          {
+            icon: 'fa-solid fa-bag-shopping',
+            link: '#'
+          }
+        ]
       }
     },
   }
@@ -41,9 +55,11 @@
 
       <nav class="profile">
         <ul class="d-flex">
-          <li><a href="#"><i class="fa-regular fa-user"></i></a></li>
-          <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
-          <li><a href="#"><i class="fa-solid fa-bag-shopping"></i></a></li>
+          <li
+            v-for="(section, index) in iconsMenu"
+            :key="index"><a :href="section.link">
+              <i :class="section.icon"></i></a>
+          </li>
         </ul>
       </nav>
     </div>
