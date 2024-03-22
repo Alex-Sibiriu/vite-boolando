@@ -46,6 +46,7 @@
 <template>
 
   <footer>
+    <!-- INFO SECTION -->
     <div class="container d-flex">
       <!-- INFO SECTION -->
       <div class="info-section">

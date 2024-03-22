@@ -16,7 +16,10 @@
         <img :src="`../../public/assets/img/${product.frontImage}`" :alt="product.name" class="first-img">
         <img :src="`../../public/assets/img/${product.backImage}`" :alt="product.name" class="hover-img">
       </a>
-      <div class="heart">&hearts;</div>
+      <div class="heart"
+        :class="{'active' : product.isInFavorites}"
+        @click="product.isInFavorites = !product.isInFavorites"
+        >&hearts;</div>
       <div class="item-characteristics d-flex">
         <span
           v-for="(badge, index) in product.badges"
@@ -73,18 +76,21 @@
       width: 53px;
       line-height: 53px;
       text-align: center;
-      color: black;
+      color: $secondary-clr;
       font-size: 2.3rem;
-      background-color: white;
+      background-color: $primary-clr;
       cursor: pointer;
     
       position: absolute;
       top: 10px;
       right: 0;
       z-index: 3;
+      &.active {
+        color: $active-clr;
+      }
     }
     .item-characteristics {
-      color: white;
+      color: $primary-clr;
       font-size: .87rem;
       font-weight: bold;
       position: absolute;
@@ -92,11 +98,11 @@
       bottom: 48px;
       z-index: 3;
       .discount {
-        background-color: red;
+        background-color: $active-clr;
         padding: 6px 11px;
       }
       .tag {
-        background-color: #008000;
+        background-color: $sustainability-clr;
         margin-right: 4px;
         padding: 6px 11px;
       }
@@ -104,22 +110,18 @@
   }
   .card-bottom {
     .brand, .prices {
-      color: #71716F;
+      color: $tertiary-clr;
       font-size: .87rem;
       font-weight: bold;
     }
     .prices {
       font-size: .93rem;
       .current-price {
-        color: red;
+        color: $active-clr
       }
     }
 
   }
-}
-
-.card-top .heart:hover {
-  color: red;
 }
   
 </style>
