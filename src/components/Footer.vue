@@ -2,7 +2,7 @@
   export default {
     data() {
       return {
-        footerMenu: [
+        helpsSections: [
           {
             title: 'Informazioni legali',
             link: '#'
@@ -52,9 +52,9 @@
         <h2>Boolando s.r.l.</h2>
         <ul class="d-flex">
           <li
-            v-for="(section, index) in footerMenu"
-            :key="index">
-            <a :href="section.link">{{ section.title }}</a>
+            v-for="(help, index) in helpsSections"
+            :key="`h-${index}`">
+            <a :href="help.link">{{ help.title }}</a>
           </li>
         </ul>
       </div>
@@ -66,7 +66,7 @@
         <ul class="social-icons d-flex">
           <li
             v-for="(social, index) in socials"
-            :key="index">
+            :key="`s-${index}`">
             <a :href="social.link">
               <i :class="social.icon"></i>
             </a>
@@ -80,9 +80,9 @@
 </template>
 
 <style lang="scss" scoped>
-  @import '../assets/scss/partials/general';
-  @import '../assets/scss/partials/variables';
-  @import '../assets/scss/partials/utilities';
+  @use '../assets/scss/partials/variables' as *;
+  @use '../assets/scss/partials/general';
+  @use '../assets/scss/partials/utilities';
 
   footer {
     background-color: $footer-clr;

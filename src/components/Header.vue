@@ -3,7 +3,7 @@
   export default {
     data() {
       return {
-        sections: [
+        categories: [
           {
             title: 'Donna',
             link: '#'
@@ -43,9 +43,9 @@
       <nav class="categories">
         <ul class="d-flex">
           <li
-            v-for="(section, index) in sections"
-            :key="index"><a
-            :href="section.link">{{ section.title }}</a></li>
+            v-for="(category, index) in categories"
+            :key="`c-${index}`"><a
+            :href="category.link">{{ category.title }}</a></li>
         </ul>
       </nav>
 
@@ -57,7 +57,7 @@
         <ul class="d-flex">
           <li
             v-for="(section, index) in iconsMenu"
-            :key="index"><a :href="section.link">
+            :key="`i-${index}`"><a :href="section.link">
               <i :class="section.icon"></i></a>
           </li>
         </ul>
@@ -68,9 +68,9 @@
 </template>
 
 <style lang="scss" scoped>
-  @import '../assets/scss/partials/general';
-  @import '../assets/scss/partials/variables';
-  @import '../assets/scss/partials/utilities';
+  @use '../assets/scss/partials/variables' as *;
+  @use '../assets/scss/partials/general';
+  @use '../assets/scss/partials/utilities';
 
   header {
     width: 100%;

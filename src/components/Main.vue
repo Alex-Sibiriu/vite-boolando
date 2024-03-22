@@ -1,13 +1,17 @@
 <script>
+  import Card from './Card.vue';
+
   export default {
-    
+    components: {
+      Card,
+    }
   }
 </script>
 
 <template>
   <main>
     <div class="container d-flex">
-      <h2>MAIN</h2>
+      <Card />
     </div>
   </main>
 </template>
