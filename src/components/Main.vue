@@ -20,7 +20,7 @@
       <Card 
         v-for="product in this.products"
         :key="product.id"
-        :product="product"
+        :item="product"
       />
     </div>
   </main>

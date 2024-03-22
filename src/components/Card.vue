@@ -1,8 +1,13 @@
 <script>
   export default {
     props: {
-      product: Object
-    }
+      item: Object
+    },
+    methods: {
+      toggleFavorite() {
+        this.item.isInFavorites = !this.item.isInFavorites
+      }
+    },
   }
 </script>
 
@@ -13,16 +18,17 @@
     <!-- Card Top -->
     <div class="card-top">
       <a href="#">
-        <img :src="`../../public/assets/img/${product.frontImage}`" :alt="product.name" class="first-img">
-        <img :src="`../../public/assets/img/${product.backImage}`" :alt="product.name" class="hover-img">
+        <img :src="`/assets/img/${item.frontImage}`" :alt="item.name" class="first-img">
+        <img :src="`/assets/img/${item.backImage}`" :alt="item.name" class="hover-img">
       </a>
       <div class="heart"
-        :class="{'active' : product.isInFavorites}"
-        @click="product.isInFavorites = !product.isInFavorites"
+        :class="{'active' : item.isInFavorites}"
+        @mouseover.stop=""
+        @click="toggleFavorite"
         >&hearts;</div>
       <div class="item-characteristics d-flex">
         <span
-          v-for="(badge, index) in product.badges"
+          v-for="(badge, index) in item.badges"
           :key="index"
           :class="badge.type">{{badge.value}}</span>
       </div>
@@ -32,15 +38,15 @@
     <!-- Card Bottom -->
     <div class="card-bottom">
       <div>
-        <a href="#" class="brand">{{ product.brand }}</a>
+        <a href="#" class="brand">{{ item.brand }}</a>
       </div>
       <div class="item-name">
         <a href="#">
-          <h3>{{ product.name }}</h3>
+          <h3>{{ item.name }}</h3>
         </a>
       </div>
       <div class="prices">
-        <span class="current-price">{{ product.price }} &euro;</span>
+        <span class="current-price">{{ item.price }} &euro;</span>
       </div>
     </div>
     <!-- /Card Bottom -->
