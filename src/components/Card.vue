@@ -6,6 +6,21 @@
     methods: {
       toggleFavorite() {
         this.item.isInFavorites = !this.item.isInFavorites
+      },
+
+      isDiscounted(dress) {
+        return dress.badges.find(badge => badge.type === 'discount') !== undefined;
+      },
+
+      discountedPrice(dress) {
+        if (this.isDiscounted(dress)) {
+          const discountBadge = dress.badges.find(badge => badge.type === 'discount');
+          const discountValue = parseInt(discountBadge.value.replace('%', ''));
+          const discountedPrice = dress.price + (dress.price / 100 * discountValue);
+          return discountedPrice.toFixed(2);
+        } else {
+          return dress.price
+        }
       }
     },
   }
@@ -46,7 +61,8 @@
         </a>
       </div>
       <div class="prices">
-        <span class="current-price">{{ item.price }} &euro;</span>
+        <span class="current-price">{{ discountedPrice(item) }} &euro; </span>
+        <span v-if="isDiscounted(item)" class="original-price">{{ item.price }} &euro;</span>
       </div>
     </div>
     <!-- /Card Bottom -->
@@ -124,6 +140,9 @@
       font-size: .93rem;
       .current-price {
         color: $active-clr
+      }
+      .original-price {
+        text-decoration: line-through ;
       }
     }
 
