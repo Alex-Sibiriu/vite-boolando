@@ -1,8 +1,8 @@
 <script>
   export default {
-    // props: {
-    //   product: Object
-    // }
+    props: {
+      product: Object
+    }
   }
 </script>
 
@@ -13,13 +13,15 @@
     <!-- Card Top -->
     <div class="card-top">
       <a href="#">
-        <img src="../../public/assets/img/1.webp" alt="item 1" class="first-img">
-        <img src="../../public/assets/img/1b.webp" alt="item 1b" class="hover-img">
+        <img :src="`../../public/assets/img/${product.frontImage}`" :alt="product.name" class="first-img">
+        <img :src="`../../public/assets/img/${product.backImage}`" :alt="product.name" class="hover-img">
       </a>
       <div class="heart">&hearts;</div>
       <div class="item-characteristics d-flex">
-        <span class="discount">-50%</span>
-        <span class="sustainability">Sostenibilità</span>
+        <span
+          v-for="(badge, index) in product.badges"
+          :key="index"
+          :class="badge.type">{{badge.value}}</span>
       </div>
     </div>
     <!-- /Card Top -->
@@ -27,16 +29,15 @@
     <!-- Card Bottom -->
     <div class="card-bottom">
       <div>
-        <a href="#" class="brand">Levi's</a>
+        <a href="#" class="brand">{{ product.brand }}</a>
       </div>
       <div class="item-name">
         <a href="#">
-          <h3>Relaxed fit tee unisex</h3>
+          <h3>{{ product.name }}</h3>
         </a>
       </div>
       <div class="prices">
-        <span class="current-price">14,99 &euro; </span>
-        <span class="original-price">29,99 &euro;</span>
+        <span class="current-price">{{ product.price }} &euro;</span>
       </div>
     </div>
     <!-- /Card Bottom -->
@@ -92,11 +93,11 @@
       z-index: 3;
       .discount {
         background-color: red;
-        margin-right: 4px;
         padding: 6px 11px;
       }
-      .sustainability {
+      .tag {
         background-color: #008000;
+        margin-right: 4px;
         padding: 6px 11px;
       }
     }
@@ -111,9 +112,6 @@
       font-size: .93rem;
       .current-price {
         color: red;
-      }
-      .original-price {
-        text-decoration: line-through ;
       }
     }
 

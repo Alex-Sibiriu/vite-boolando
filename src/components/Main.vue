@@ -1,17 +1,27 @@
 <script>
   import Card from './Card.vue';
+  import {products} from '../assets/data/products.json'
 
   export default {
     components: {
       Card,
-    }
+    },
+    data() {
+      return {
+        products
+      }
+    },
   }
 </script>
 
 <template>
   <main>
     <div class="container d-flex">
-      <Card />
+      <Card 
+        v-for="product in this.products"
+        :key="product.id"
+        :product="product"
+      />
     </div>
   </main>
 </template>
@@ -22,7 +32,6 @@
   @import '../assets/scss/partials/utilities';
 
   main {
-    height: calc(100vh - $footer-h); // Provvisorio
     padding-top: 123px;
   }
 </style>

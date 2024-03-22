@@ -87,7 +87,7 @@
   footer {
     background-color: $footer-clr;
     height: $footer-h;
-    // margin-top: 15px;
+    margin-top: 15px;
     .container {
       padding: 0 10px;
       justify-content: space-between;
